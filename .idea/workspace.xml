@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f46e9a53-b52a-4243-b0c5-ddd6b29f4937" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/lottery.js" afterPath="$PROJECT_DIR$/app/js/lottery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/lottery/base.js" afterPath="$PROJECT_DIR$/app/js/lottery/base.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/lottery/interface.js" afterPath="$PROJECT_DIR$/app/js/lottery/interface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/js/cp.min.js" afterPath="$PROJECT_DIR$/server/public/js/cp.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/public/js/index.js" afterPath="$PROJECT_DIR$/server/public/js/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lottery.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="lottery.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/js/lottery.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -88,6 +84,16 @@
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,6 +150,7 @@
         <option value="$PROJECT_DIR$/app/js/lottery/base.js" />
         <option value="$PROJECT_DIR$/app/js/lottery.js" />
         <option value="$PROJECT_DIR$/app/js/lottery/interface.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -299,12 +306,12 @@
       <workItem from="1509603557019" duration="942000" />
       <workItem from="1509670935602" duration="3720000" />
       <workItem from="1509930384247" duration="4151000" />
-      <workItem from="1510017213302" duration="11199000" />
+      <workItem from="1510017213302" duration="11372000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47518000" />
+    <option name="totallyTimeSpent" value="47691000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -331,6 +338,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.gitignore" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -339,14 +349,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/js/lottery/interface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/js/lottery/base.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -762,6 +764,14 @@
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="5" lean-forward="false" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
