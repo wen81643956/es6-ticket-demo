@@ -13895,6 +13895,8 @@ var _lottery2 = _interopRequireDefault(_lottery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var syy = new _lottery2.default();
+
 /***/ }),
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -19427,6 +19429,12 @@ module.exports = function (regExp, replace) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 __webpack_require__(90);
 
 var _base = __webpack_require__(331);
@@ -19450,6 +19458,163 @@ var _jquery = __webpack_require__(89);
 var _jquery2 = _interopRequireDefault(_jquery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var copyProperties = function copyProperties(target, source) {
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = Reflect.ownKeys(source)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var key = _step.value;
+
+      if (key !== 'constructor' && key !== 'prototype' && key !== 'name') {
+        var desc = Object.getOwnPropertyDescriptor(source, key);
+        Object.defineProperty(target, key, desc);
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+};
+
+var mix = function mix() {
+  for (var _len = arguments.length, mixins = Array(_len), _key = 0; _key < _len; _key++) {
+    mixins[_key] = arguments[_key];
+  }
+
+  var Mix = function Mix() {
+    _classCallCheck(this, Mix);
+  };
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = mixins[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var mixin = _step2.value;
+
+      copyProperties(Mix, mixin);
+      copyProperties(Mix.prototype, mixin.prototype);
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+        _iterator2.return();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  return Mix;
+};
+
+var Lottery = function (_mix) {
+  _inherits(Lottery, _mix);
+
+  function Lottery() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'syy';
+    var cname = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '11选5';
+    var issue = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '**';
+    var state = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '**';
+
+    _classCallCheck(this, Lottery);
+
+    var _this2 = _possibleConstructorReturn(this, (Lottery.__proto__ || Object.getPrototypeOf(Lottery)).call(this));
+
+    _this2.name = name;
+    _this2.cname = cname;
+    _this2.issue = issue;
+    _this2.state = state;
+    _this2.el = '';
+    _this2.omit = new Map();
+    _this2.open_code = new Set();
+    _this2.open_code_list = new Set();
+    _this2.play_list = new Map();
+    _this2.number = new Set();
+    _this2.issue_el = '#curr_issue';
+    _this2.countdown_el = '#countdown';
+    _this2.state_el = '.state_el';
+    _this2.cart_el = '.codelist';
+    _this2.omit_el = '';
+    _this2.cur_play = 'r5';
+    _this2.initPlayList();
+    _this2.initNumber();
+    _this2.updateState();
+    _this2.initEvent();
+    return _this2;
+  }
+
+  /**
+   * 状态更新
+   */
+
+
+  _createClass(Lottery, [{
+    key: 'updateState',
+    value: function updateState() {
+      var _this = this;
+      this.getState().then(function (res) {
+        _this.issue = res.issue;
+        _this.end_time = res.end_time;
+        _this.state = res.state;
+        (0, _jquery2.default)(_this.issue_el).text(res.issue);
+        _this.countdown(res.end_time, function (time) {
+          (0, _jquery2.default)(_this.countdown_el).html(time);
+        }, function () {
+          setTimeout(function () {
+            _this.updateState();
+            _this.getOmit(_this.issue).then(function (res) {});
+            _this.getOpenCode(_this.issue).then(function (res) {});
+          }, 500);
+        });
+      });
+    }
+
+    /**
+     * 初始化事件
+     */
+
+  }, {
+    key: 'initEvent',
+    value: function initEvent() {
+      var _this = this;
+      (0, _jquery2.default)('#plays').on('click', 'li', _this.changePlayNav.bind(_this));
+      (0, _jquery2.default)('.boll-list').on('click', '.btnboll', _this.toggleCodeActive.bind(_this));
+      (0, _jquery2.default)('#confirm_sel_code').on('click', _this.addCode.bind(_this));
+      (0, _jquery2.default)('.dxjo').on('click', 'li', _this.assistHandle.bind(_this));
+      (0, _jquery2.default)('.qkmethod').on('click', '.btn-middle', _this.getRandomCode.bind(_this));
+    }
+  }]);
+
+  return Lottery;
+}(mix(_base2.default, _calculate2.default, _interface2.default, _timer2.default));
+
+exports.default = Lottery;
 
 /***/ }),
 /* 331 */
@@ -19525,7 +19690,7 @@ var Base = function () {
     key: 'initNumber',
     value: function initNumber() {
       for (var i = 1; i < 12; i++) {
-        this.number.add('' + i).padStart(2, '0');
+        this.number.add(('' + i).padStart(2, '0'));
       }
     }
 
@@ -19846,9 +20011,8 @@ var Calculate = function () {
       var exist = this.play_list.has(play_name);
       var arr = new Array(active).fill('0');
       if (exist && play_name.charAt(0) === 'r') {
-        count = Calculate.combine(arr, play_name.split('')[1]);
+        count = Calculate.combine(arr, play_name.split('')[1]).length;
       }
-
       return count;
     }
 
@@ -19938,6 +20102,7 @@ var Calculate = function () {
           }
         }
       })(arr, size, []);
+      return all_result;
     }
   }]);
 
@@ -20066,6 +20231,10 @@ exports.default = Interface;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20076,12 +20245,12 @@ var Timer = function () {
   }
 
   _createClass(Timer, [{
-    key: "countdown",
+    key: 'countdown',
     value: function countdown(end, update, handle) {
       var now = new Date().getTime();
       var _this = this;
       // 当倒计时结束时
-      if (now - end) {
+      if (now - end > 0) {
         handle.call(_this);
       } else {
         var last_time = end - now;
@@ -20096,14 +20265,27 @@ var Timer = function () {
         var s = ~~((last_time - d * DAY_TIMES - h * HOUR_TIMES - m * MINUTES_TIMES) / SECOND_TIMES);
         var time_arr = [];
         if (d > 0) {
-          time_arr.push("<em>" + d + "</em>\u5929");
+          time_arr.push('<em>' + d + '</em>\u5929');
         }
+        if (time_arr.length || h > 0) {
+          time_arr.push('<em>' + h + '</em>\u65F6');
+        }
+        if (time_arr.length || s > 0) {
+          time_arr.push('<em>' + s + '</em>\u79D2');
+        }
+        _this.last_time = time_arr.join('');
+        update.call(_this, time_arr.join(''));
+        setTimeout(function () {
+          _this.countdown(end, update, handle);
+        }, 1000);
       }
     }
   }]);
 
   return Timer;
 }();
+
+exports.default = Timer;
 
 /***/ })
 /******/ ]);

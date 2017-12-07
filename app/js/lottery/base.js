@@ -41,7 +41,7 @@ class Base {
    */
   initNumber() {
     for (let i = 1; i < 12; i++) {
-      this.number.add((`${i}`)).padStart(2, '0')
+      this.number.add((`${i}`).padStart(2, '0'))
     }
   }
 

@@ -3,7 +3,7 @@ class Timer {
     const now = new Date().getTime();
     const _this = this;
     // 当倒计时结束时
-    if (now - end) {
+    if (now - end > 0) {
       handle.call(_this);
     } else {
       let last_time = end - now;
@@ -20,6 +20,19 @@ class Timer {
       if (d > 0) {
         time_arr.push(`<em>${d}</em>天`);
       }
+      if (time_arr.length || (h > 0)) {
+        time_arr.push(`<em>${h}</em>时`);
+      }
+      if (time_arr.length || s > 0) {
+        time_arr.push(`<em>${s}</em>秒`);
+      }
+      _this.last_time = time_arr.join('');
+      update.call(_this, time_arr.join(''));
+      setTimeout(() => {
+        _this.countdown(end, update, handle);
+      }, 1000);
     }
   }
 }
+
+export default Timer
