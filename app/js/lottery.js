@@ -80,7 +80,7 @@ class Lottery extends mix(Base, Calculate, Interface, Timer){
   initEvent () {
     let _this = this
     $('#plays').on('click', 'li', _this.changePlayNav.bind(_this))
-    $('.boll-list').on('click', '.btnboll', _this.toggleCodeActive.bind(_this))
+    $('.boll-list').on('click', '.btn-boll', _this.toggleCodeActive.bind(_this))
     $('#confirm_sel_code').on('click', _this.addCode.bind(_this))
     $('.dxjo').on('click', 'li', _this.assistHandle.bind(_this))
     $('.qkmethod').on('click', '.btn-middle', _this.getRandomCode.bind(_this))

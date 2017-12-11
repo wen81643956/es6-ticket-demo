@@ -19604,7 +19604,7 @@ var Lottery = function (_mix) {
     value: function initEvent() {
       var _this = this;
       (0, _jquery2.default)('#plays').on('click', 'li', _this.changePlayNav.bind(_this));
-      (0, _jquery2.default)('.boll-list').on('click', '.btnboll', _this.toggleCodeActive.bind(_this));
+      (0, _jquery2.default)('.boll-list').on('click', '.btn-boll', _this.toggleCodeActive.bind(_this));
       (0, _jquery2.default)('#confirm_sel_code').on('click', _this.addCode.bind(_this));
       (0, _jquery2.default)('.dxjo').on('click', 'li', _this.assistHandle.bind(_this));
       (0, _jquery2.default)('.qkmethod').on('click', '.btn-middle', _this.getRandomCode.bind(_this));
@@ -19898,7 +19898,7 @@ var Base = function () {
     key: 'getCount',
     value: function getCount() {
       var _this = this;
-      var active = (0, _jquery2.default)('boll-list .btn-boll-active');
+      var active = (0, _jquery2.default)('boll-list .btn-boll-active').length;
       var count = _this.computeCount(active, _this.cur_play);
       var range = _this.computeBonus(active, _this.cur_play);
       var money = count * 2;

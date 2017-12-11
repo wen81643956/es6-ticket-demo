@@ -186,7 +186,7 @@ class Base {
 
   getCount() {
     let _this = this
-    let active = $('boll-list .btn-boll-active')
+    let active = $('boll-list .btn-boll-active').length
     let count = _this.computeCount(active, _this.cur_play)
     let range = _this.computeBonus(active, _this.cur_play)
     let money = count * 2
