@@ -23,6 +23,9 @@ class Timer {
       if (time_arr.length || (h > 0)) {
         time_arr.push(`<em>${h}</em>时`);
       }
+      if (time_arr.length || (m > 0)) {
+        time_arr.push(`<em>${m}</em>分`);
+      }
       if (time_arr.length || s > 0) {
         time_arr.push(`<em>${s}</em>秒`);
       }

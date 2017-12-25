@@ -19870,11 +19870,11 @@ var Base = function () {
     key: 'addCode',
     value: function addCode() {
       var _this = this;
-      var $active = (0, _jquery2.default)('boll-list .btn-boll-active').text().match(/\d{2}/g);
+      var $active = (0, _jquery2.default)('.boll-list .btn-boll-active').text().match(/\d{2}/g);
       var active = $active ? $active.length : 0;
       var count = _this.computeCount(active, _this.cur_play);
       if (count) {
-        _this.addCodeItem($active.join(''), _this.cur_play, _this.play_list.get(_this.cur_play).name, count);
+        _this.addCodeItem($active.join(' '), _this.cur_play, _this.play_list.get(_this.cur_play).name, count);
       }
     }
 
@@ -19890,7 +19890,7 @@ var Base = function () {
     key: 'addCodeItem',
     value: function addCodeItem(code, type, typeName, count) {
       var _this = this;
-      var tpl = '\n      <li codes="' + type + '|' + code + '" bonus="' + count * 2 + '" count="' + count + '">\n        <div class="code">\n          <b>' + typeName + (count > 1 ? '复式' : '单式') + '</b>\n          <b class="em">' + code + '</b>\n          [' + count + '\u6CE8,<em class="code-list-money">' + count * 2 + '</em>]\n        </div>\n      </li>\n    ';
+      var tpl = '\n      <li codes="' + type + '|' + code + '" bonus="' + count * 2 + '" count="' + count + '">\n        <div class="code">\n          <b>' + typeName + (count > 1 ? '复式' : '单式') + '</b>\n          <b class="em">' + code + '</b>\n          [' + count + '\u6CE8,<em class="code-list-money">' + count * 2 + '\u5143</em>]\n        </div>\n      </li>\n    ';
       (0, _jquery2.default)(_this.cart_el).append(tpl);
       _this.getTotal();
     }
@@ -19898,7 +19898,7 @@ var Base = function () {
     key: 'getCount',
     value: function getCount() {
       var _this = this;
-      var active = (0, _jquery2.default)('boll-list .btn-boll-active').length;
+      var active = (0, _jquery2.default)('.boll-list .btn-boll-active').length;
       var count = _this.computeCount(active, _this.cur_play);
       var range = _this.computeBonus(active, _this.cur_play);
       var money = count * 2;
@@ -19944,7 +19944,7 @@ var Base = function () {
           index = void 0;
       var number = Array.from(this.number);
       while (num--) {
-        index = Math.parseInt(Math.random() * number.length);
+        index = Number.parseInt(Math.random() * number.length);
         arr.push(index);
         number.splice(index, 1);
       }
@@ -20081,7 +20081,7 @@ var Calculate = function () {
     key: 'combine',
     value: function combine(arr, size) {
       var all_result = [];
-      (function (arr, size, result) {
+      (function f(arr, size, result) {
         var len = arr.length;
         if (size > len) {
           return;
@@ -20269,6 +20269,9 @@ var Timer = function () {
         }
         if (time_arr.length || h > 0) {
           time_arr.push('<em>' + h + '</em>\u65F6');
+        }
+        if (time_arr.length || m > 0) {
+          time_arr.push('<em>' + m + '</em>\u5206');
         }
         if (time_arr.length || s > 0) {
           time_arr.push('<em>' + s + '</em>\u79D2');

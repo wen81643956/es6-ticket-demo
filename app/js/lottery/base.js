@@ -154,11 +154,11 @@ class Base {
    */
   addCode() {
     let _this = this
-    let $active = $('boll-list .btn-boll-active').text().match(/\d{2}/g)
+    let $active = $('.boll-list .btn-boll-active').text().match(/\d{2}/g)
     let active = $active ? $active.length : 0
     let count =_this.computeCount(active, _this.cur_play)
     if (count) {
-      _this.addCodeItem($active.join(''), _this.cur_play, _this.play_list.get(_this.cur_play).name, count)
+      _this.addCodeItem($active.join(' '), _this.cur_play, _this.play_list.get(_this.cur_play).name, count)
     }
   }
 
@@ -176,7 +176,7 @@ class Base {
         <div class="code">
           <b>${typeName}${count > 1 ? '复式' : '单式'}</b>
           <b class="em">${code}</b>
-          [${count}注,<em class="code-list-money">${count * 2}</em>]
+          [${count}注,<em class="code-list-money">${count * 2}元</em>]
         </div>
       </li>
     `
@@ -186,7 +186,7 @@ class Base {
 
   getCount() {
     let _this = this
-    let active = $('boll-list .btn-boll-active').length
+    let active = $('.boll-list .btn-boll-active').length
     let count = _this.computeCount(active, _this.cur_play)
     let range = _this.computeBonus(active, _this.cur_play)
     let money = count * 2
@@ -218,10 +218,10 @@ class Base {
   getTotal() {
     let count = 0
     $('.codelist li').each(function (index, item) {
-      count += $(item).attr('count') * 1
+      count += $(item).attr('count') * 1;
     })
-    $('#count').text(count)
-    $('#money').text(count * 2)
+    $('#count').text(count);
+    $('#money').text(count * 2);
   }
 
   /**
@@ -229,12 +229,12 @@ class Base {
    * @param num
    */
   getRandom(num) {
-    let arr = [], index
-    let number = Array.from(this.number)
+    let arr = [], index;
+    let number = Array.from(this.number);
     while(num --) {
-      index = Math.parseInt(Math.random() * number.length)
-      arr.push(index)
-      number.splice(index, 1)
+      index = Number.parseInt(Math.random() * number.length);
+      arr.push(index);
+      number.splice(index, 1);
     }
     return arr.join(' ')
   }

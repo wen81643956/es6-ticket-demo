@@ -71,7 +71,7 @@ class Calculate {
    */
   static combine(arr, size) {
     let all_result = [];
-    (function (arr, size, result) {
+    (function f(arr, size, result) {
       let len = arr.length;
       if (size > len) {
         return;
